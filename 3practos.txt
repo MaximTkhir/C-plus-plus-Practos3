@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+const int ROWS = 3;
+const int COLS = 5;
+
+int main() {
+    double matrix[ROWS][COLS];
+
+    cout << "Введите элементы матрицы " << ROWS << "x" << COLS << ":\n";
+    for (int i = 0; i < ROWS; ++i) {
+        cout << "Строка " << i + 1 << ":\n";
+        for (int j = 0; j < COLS; ++j) {
+            cout << "Элемент " << j + 1 << ": ";
+            while (!(cin >> matrix[i][j])) {
+                cout << "Ошибка ввода. Пожалуйста, введите число: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+    }
+    cout << "\nСредние арифметические для каждой строки:\n";
+    for (int i = 0; i < ROWS; ++i) {
+        double sum = 0;
+        for (int j = 0; j < COLS; ++j) {
+            sum += matrix[i][j];
+        }
+        double average = sum / COLS;
+        cout << "Строка " << i + 1 << ": " << average << endl;
+    }
+
+    return 0;
+}
